@@ -23,7 +23,7 @@ pipeline {
         stage('hello world'){
             steps{
                 sh 'echo "hello world"'
-                sh "sleep 20"
+                // sh "sleep 20"
             }
         }
     }
