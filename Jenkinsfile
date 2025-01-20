@@ -51,4 +51,5 @@ pipeline {
         success  {
             echo "inkem undile panuko nuvv happy ga"
         }
+    }
 }
