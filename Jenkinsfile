@@ -24,6 +24,15 @@ pipeline {
             steps{
                 sh 'echo "hello world"'
                 // sh "sleep 20"
+                echo "Hello ${params.PERSON}"
+
+                echo "Biography: ${params.BIOGRAPHY}"
+
+                echo "Toggle: ${params.TOGGLE}"
+
+                echo "Choice: ${params.CHOICE}"
+
+                echo "Password: ${params.PASSWORD}"
             }
         }
     }
