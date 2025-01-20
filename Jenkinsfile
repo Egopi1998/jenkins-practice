@@ -8,7 +8,7 @@ pipeline {
         timeout(time: 10, unit: 'SECONDS')
     }
         parameters {
-        string(name: 'github', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+        string(name: 'Github', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
 
         text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
 
