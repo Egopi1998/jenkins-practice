@@ -8,7 +8,7 @@ pipeline {
         timeout(time: 10, unit: 'SECONDS')
     }
         parameters {
-        string(name: 'Github', defaultValue: 'Github', description: 'Who should I say hello to?')
+        string(name: 'PERSON', defaultValue: 'Github', description: 'Who should I say hello to?')
 
         text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
 
@@ -18,6 +18,10 @@ pipeline {
 
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
     }
+    environment {
+                DEPLOY_TO = 'production'
+                GREETING = 'good morning'
+            }
 
     stages{
         stage('hello world'){
@@ -33,6 +37,7 @@ pipeline {
                 echo "Choice: ${params.CHOICE}"
 
                 echo "Password: ${params.PASSWORD}"
+                echo "my env is ${DEPLOY_TO}"
             }
         }
     }
