@@ -6,6 +6,7 @@ pipeline {
     options {
         disableConcurrentBuilds()
         timeout(time: 10, unit: 'SECONDS')
+        ansicolor('xterm')
     }
     // parameters {
     //     string(name: 'PERSON', defaultValue: 'Github', description: 'Who should I say hello to?')
@@ -14,7 +15,7 @@ pipeline {
 
     //     booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
 
-    //     choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+        choice(name: 'Action', choices: ['greet', 'nogreet'], description: 'Pick something')
 
     //     password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
     // }
@@ -25,6 +26,15 @@ pipeline {
 
     stages{
         stage('hello world'){
+            when {
+                expression {
+                    param.Action == 'greet' // this stage will run if action = greet only
+                }
+            }
+            input{
+                message "should i say hello ?"
+                ok "yes, you should"
+            }
             steps{
                 sh 'echo "hello world"'
                 // sh "sleep 20"
@@ -44,6 +54,7 @@ pipeline {
     post { 
         always { 
             echo 'I will always say Hello again!'
+            deleteDir() // this will delete workspace 
         }
         failure {
             echo "you are seeing this because job in failed"
