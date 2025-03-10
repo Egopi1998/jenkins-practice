@@ -1,7 +1,7 @@
-* *master and agent configuration*
+* * * * * * * master and agent configuration* * * * * * * * *
 * on Agent create jenkins user and set password
 ```
-sudo seradd -m jenkins 
+sudo useradd -m jenkins 
 sudo passwd jenkins
 ```
 * on master
